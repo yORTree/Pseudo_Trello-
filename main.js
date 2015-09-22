@@ -2,6 +2,7 @@ var app = {};
 
 // $(function() { //when DOM is ready...
 	app.users = new UserCollection([
+
 		{username:'Jennifer'},
 		{username:'Jason'},
 		{username:'Ty'}
@@ -16,26 +17,49 @@ var LoginModel = Backbone.Model.extend({
 });
 
 
+
 var LoginView = Backbone.View.extend({
 	render : function (){
-		console.log("render login")
-		// var loginVal = this.model.get("username");
-		var usrBtn = '<button id="login">Login</button>'
-		var input = '<input type="text" value="Please Enter UserName">';
-		this.$el.html("<br><div>" + input +usrBtn +"</div>");
+		console.log("render login");
+		var login = '<button id="login" type="submit">Login</button>';
+		var usrBtn = '<button id="newName">Add Name</button>';
+		var input = '<input type="text" id="userField" value="Add New User Name">';
+		var selector = this.userSelector();
+		this.$el.html("<br><div>" +selector +login+ input +usrBtn+"</div>");
 		// this.el.append(this.$el);
 	},
-
-	initialize: function(){
-		// console.log("init login")
-		// this.once("change", this.render, this);
+    userSelector: function(){
+		var users = [];
+		var content = "";
+		
+		for (var i = 0;i < app.users.length; i++){ 	
+			users.push(app.users.models[i].attributes.username);
+			content+=("<option>"+users[i]+"</option>");
+	      	
+      	}
+		content = "<select id='selectDropdown'>"+content+"</select>";
+		return content;
 	},
+
+	addNewUser: function(){
+		var newUser = $("#userField").val();
+		app.users.add({username: newUser});
+		this.render();
+	},
+
+	// initialize: function(){
+ //       this.model.on("change", this.render, this);
+	// 	// console.log("init login")
+	// 	// this.once("change", this.render, this);
+	// },
 	events: {
-		"click #login" : "userLogin"
+		"click #login" 		: "userLogin",
+		"click #newName"	: "addNewUser"
+	},
+	
+	userLogin : function(){
+		taskView.render();
 	}
-	// userLogin : function(){
-	// 	this.loginView.add({});
-	// }
 
 });
 
@@ -51,7 +75,7 @@ var TaskModel = Backbone.Model.extend({
 var TaskView = Backbone.View.extend({
 	render: function (){
 		var taskVal = this.model.get("value");
-		var btn = '<button id="showTasks">List of Tasks</button>'
+		var btn = '<button id="showTasks">List of Tasks</button>';
 		var input = '<input type="text" value=' + taskVal + '/>';
 		this.$el.html(taskVal+"<br><div>" + input +btn +"</div>");
 
@@ -98,7 +122,7 @@ var TaskCollectionView = Backbone.View.extend({
         this.$("#taskList").append(view.$el);
     }
 
-  })
+  });
 // });
 
 var loginView;
@@ -112,11 +136,12 @@ taskCollection = new TaskCollection();
 taskCollectionView = new TaskCollectionView({ collection : taskCollection});
 
 loginView.render();
-taskCollectionView.render();
+// taskCollectionView.render();
 
 $("#app").append(taskCollectionView.$el);
 
 });
+
 
 
 // 	 app.tasks = new TaskCollection([

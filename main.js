@@ -2,10 +2,42 @@ var app = {};
 
 // $(function() { //when DOM is ready...
 	app.users = new UserCollection([
-		{username:'Person1'},
-		{username:'Person2'},
-		{username:'Person3'}
+		{username:'Jennifer'},
+		{username:'Jason'},
+		{username:'Ty'}
 	]);
+
+
+var LoginModel = Backbone.Model.extend({
+	// // defaults : {"username" : ""},
+	// replace : function(usr){
+	// this.set("username", usr);
+	// }
+});
+
+
+var LoginView = Backbone.View.extend({
+	render : function (){
+		console.log("render login")
+		// var loginVal = this.model.get("username");
+		var usrBtn = '<button id="login">Login</button>'
+		var input = '<input type="text" value="Please Enter UserName">';
+		this.$el.html("<br><div>" + input +usrBtn +"</div>");
+		// this.el.append(this.$el);
+	},
+
+	initialize: function(){
+		// console.log("init login")
+		// this.once("change", this.render, this);
+	},
+	events: {
+		"click #login" : "userLogin"
+	}
+	// userLogin : function(){
+	// 	this.loginView.add({});
+	// }
+
+});
 
 
 var TaskModel = Backbone.Model.extend({
@@ -69,14 +101,17 @@ var TaskCollectionView = Backbone.View.extend({
   })
 // });
 
-
+var loginView;
 var taskCollection;
 var taskCollectionView;
 $(document).ready( function () {
+	console.log("ready");
 
+loginView = new LoginView({el:"#app"});
 taskCollection = new TaskCollection();
 taskCollectionView = new TaskCollectionView({ collection : taskCollection});
 
+loginView.render();
 taskCollectionView.render();
 
 $("#app").append(taskCollectionView.$el);

@@ -1,6 +1,6 @@
 var app = {};
 
-$(function() { //when DOM is ready...
+// $(function() { //when DOM is ready...
 	app.users = new UserCollection([
 		{username:'Person1'},
 		{username:'Person2'},
@@ -8,18 +8,42 @@ $(function() { //when DOM is ready...
 	]);
 
 
-
-
-
-var TextView = Backbone.View.extend({
-	defaults : {"value": ""},
-	replace : function(str){
-		this.set("value", str);
-	}
+var TaskModel = Backbone.Model.extend({
+    defaults : {"value" : ""},
+    replace : function (str) {
+      this.set("value", str);
+    }
 });
 
 
-var TextCollectionView = Backbone.View.extend({
+var TaskView = Backbone.View.extend({
+	render: function (){
+		var taskVal = this.model.get("value");
+		var btn = '<button id="showTasks">List of Tasks</button>'
+		var input = '<input type="text" value=' + taskVal + '/>';
+		this.$el.html(taskVal+"<br><div>" + input +btn +"</div>");
+
+	},
+
+	initialize: function(){
+		this.model.on("change", this.render, this);
+	},
+	events: {
+		"click #showTasks" : "taskList"
+	},
+	taskList : function(){
+		this.taskView.add({});
+	}
+
+   
+
+});
+
+var TaskCollection = Backbone.Collection.extend({
+    model : TaskModel
+});
+
+var TaskCollectionView = Backbone.View.extend({
     render : function () {
         var btn = '<button id="addTask">Add Task</button>';
         var div = '<div id="taskList"></div>';
@@ -37,26 +61,27 @@ var TextCollectionView = Backbone.View.extend({
    },
     addView : function (newModel) {
         newModel.set("value","Enter New Task");
-        var view = new TextView({model : newModel});
+        var view = new TaskView({model : newModel});
         view.render();
         this.$("#taskList").append(view.$el);
     }
 
-})
+  })
+// });
+
+
+var taskCollection;
+var taskCollectionView;
+$(document).ready( function () {
+
+taskCollection = new TaskCollection();
+taskCollectionView = new TaskCollectionView({ collection : taskCollection});
+
+taskCollectionView.render();
+
+$("#app").append(taskCollectionView.$el);
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // 	 app.tasks = new TaskCollection([

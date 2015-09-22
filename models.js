@@ -1,6 +1,8 @@
 var UserModel = Backbone.Model.extend({
 	defaults: {
-		username:''
+		username:'Jennifer',
+		username:'Ty',
+		username:'Jason',
 	}
 })
 

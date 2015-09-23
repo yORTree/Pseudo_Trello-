@@ -57,9 +57,10 @@ var LoginView = Backbone.View.extend({
 		"click #newName"	: "addNewUser"
 	},
 
- 	userLogin : function(){
- 		loginView.remove();
- 		userView.render();
+	
+	userLogin : function(){
+		$("#login-area").hide();
+		userView.render();
  	}
 
  });
@@ -124,6 +125,61 @@ var LoginView = Backbone.View.extend({
 
 
 
+
+var UserModel = Backbone.Model.extend({
+    defaults : {"value" : ""},
+    replace : function (str) {
+      this.set("value", str);
+    }
+});
+
+
+var UserView = Backbone.View.extend({
+	render: function (){
+		console.log('rendering user view');
+		var userVal = this.model.get("creator");
+		var greeting= "<h1> Hello, "+ userVal+" !!</h1>";
+		var btn = '<button id="createTasks">List of Tasks</button>';
+		var input = '<input type="text" value= "Enter another task"/>';
+		this.$el.html("<div  id='userview'>"+greeting+"</div>");
+		$('#app').append(this.el);
+		console.log('user works!',this.el);
+
+	},
+   
+	initialize: function(){
+		this.model.on("change", this.render, this);
+	},
+	
+	events: {
+		"click #login" : "render"
+	}
+	// taskList : function(){
+	// 	this.taskView.add({});
+	// }
+
+   
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var TaskModel = Backbone.Model.extend({
     defaults : {"value" : ""},
     replace : function (str) {
@@ -132,12 +188,14 @@ var TaskModel = Backbone.Model.extend({
 });
 
 
+
+
 var TaskView = Backbone.View.extend({
 	render: function (){
 		console.log('rendering task view');
 		var taskVal = this.model.get("title");
-		var btn = '<button id="showTasks">List of Tasks</button>';
-		var input = '<input type="text" value= "Enter another task"/>';
+		var btn = '<button id="showTasks">Add New Task</button>';
+		var input = '<input type="text" value= "Create A New Task"/>';
 		this.$el.html("<br><div>"+taskVal+"</div>");
 		console.log('it works!');
 
@@ -146,6 +204,7 @@ var TaskView = Backbone.View.extend({
 	initialize: function(){
 		this.model.on("change", this.render, this);
 	},
+
 	events: {
 		"click #login" : "render"
 	},
@@ -200,16 +259,26 @@ var taskCollectionView;
 $(document).ready( function () {
 	console.log("ready");
 
-testModel = new TaskModel({title:'Make this page work!',
+userModel = new UserModel({title:'Make this page work!',
                            description: 'Fix all the code!',
                            creator: 'Jennifer'});
 
 loginView = new LoginView({el:"#app"});
 loginView.render();
-userModel = new UserModel({creator: 'Jennifer'});
-userView = new UserView({el: "#app"})
+
+
+userModel = new UserModel({title:'Make this page work!',
+                           description: 'Fix all the code!',
+                           creator: 'Jennifer'});
+
+userView = new UserView({ model: userModel});
+// userView.render();
+
+// userModel = new UserModel({creator: 'Jennifer'});
+// userView = new UserView({el: "#app"})
+
 taskCollection = new TaskCollection();
-// taskView = new TaskView({model: testModel});
+taskView = new TaskView({model: testModel});
 taskCollectionView = new TaskCollectionView({ collection : taskCollection});
 taskCollectionView.render();
 taskCollection.add(testModel)
@@ -217,7 +286,7 @@ taskCollection.add(testModel)
 // taskView.render();
 
 
-$("#app").append(taskCollectionView.$el);
+$("#app").append(userView.$el);
 
 });
 

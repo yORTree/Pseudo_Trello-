@@ -79,23 +79,24 @@ var LoginView = Backbone.View.extend({
  	render: function (){
  		console.log('rendering user view');
  		var userVal = this.model.get("creator");
-		var greeting = "<h1> Hello, " + userVal + " !</h1>"
- 		var btn = '<button id="showTasks">List of Tasks</button>';
+		var greeting = "<h1> Hello, " + userVal + "!</h1>"
+ 		var btn = '<button id="createTasks">List of Tasks</button>';
  		var input = '<input type="text" value= "Enter another task"/>';
  		this.$el.html("<br><div>"+greeting+"</div>");
+		this.$("#app").append(this.el);
  		console.log('userView render works!');
 
- 	}
+ 	},
 
  	initialize: function(){
  		this.model.on("change", this.render, this);
  	},
- 	events: {
- 		"click #login" : "render"
- 	},
- 	taskList : function(){
- 		this.taskView.add({});
-  }
+ // 	events: {
+ // 		"click #login" : "render"
+ // 	},
+ // 	taskList : function(){
+ // 		this.taskView.add({});
+ // }
 
 
 

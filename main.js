@@ -84,16 +84,16 @@ var LoginView = Backbone.View.extend({
 
 var UserView = Backbone.View.extend({
 	render: function (){
-	var myTasks = [];
 	console.log(this.model);
     
 	var greeting= "<h1> Hello, "+ this.model.get('username') +" !!</h1>";
-	var currentTasks = "<div id='currentTasks'><h2> Here are your current tasks: "+ myTasks + "</h2></div>"
+	var currentTasks = '<div id="currentTasks"><h2> Here are your current tasks: </h2><br><ul><li>Get Better At This!</li></ul></div>';
 	var createBtn = '<button id="createTask">Create New Task</button>';
+	var showAllTasks = '<button id="showTask">Show All Tasks</button>';
 	var logoutBtn = '<br><br><button id="logout">Logout</button>';
 	var taskBtn = '<br><br><button id="addTask" type="submit">Add Task</button>';
 	var input = '<br><textarea type="text" id="taskDescription" style="display: none" value="Enter Task Description"></textarea>';
-	this.$el.html("<div id='userview'>"+greeting+ currentTasks +createBtn + input + taskBtn + logoutBtn +"</div>");
+	this.$el.html("<div id='userview'>"+greeting+ currentTasks +createBtn + input + taskBtn + showAllTasks + logoutBtn +"</div>");
 	$('#app').append(this.el);
 
 	console.log('user works!',this.el);
@@ -107,29 +107,31 @@ var UserView = Backbone.View.extend({
 	events: {
 		"click #createTask" : "addDescription",
 		"click #addTask" : "taskAdder",
-		"click #logout" : "logoutUser",
+		"click #logout" : "logoutUser"
 	
 	},
 	addDescription : function(){
         $("#taskDescription").show();
-		// this.taskView.add({});
+
 	},
 
-	// taskAdder : function(){
- //    	enteredTasks = "<select id='selectDropdown'>"+myTasks+"</select>";
-	// 	return content;
-	// },
+	taskAdder : function(){
+		
+		var newTask = $("#taskDescription").val();
+		this.collection.add({description: newTask});
+
+    	// enteredTasks = "<select id='selectDropdown'>"+myTasks+"</select>";
+    	taskView = new TaskView({ collection : taskCollection});
+    	console.log(myTasks);
+ 		console.log(newTask);
+		myTasks.push(newTask);
+		console.log(myTasks);
+		$('TaskCollection').append(myTasks);
 
 
 
-
-
-
-
-
-		// taskCollectionView = new TaskCollectionView({ collection : taskCollection});
-      // taskView = new TaskView({model: taskModel});
-
+	},
+		
 
     logoutUser : function(){
     	$("#userview").hide();
@@ -139,7 +141,12 @@ var UserView = Backbone.View.extend({
 });
 
 
+var TaskView = Backbone.View.extend({
+  render : function(){
+  	$('#app').append(this.el);
+  }
 
+})
 
 var TaskModel = Backbone.Model.extend({
     defaults : {"value" : ""},
@@ -148,9 +155,11 @@ var TaskModel = Backbone.Model.extend({
     }
 });
 
+
 var TaskCollection = Backbone.Collection.extend({
     model : TaskModel,
     initialize: function () {
+    	console.log('I AM ADDED!');
        
     }
 });
@@ -158,28 +167,34 @@ var TaskCollection = Backbone.Collection.extend({
 
 var TaskCollectionView = Backbone.View.extend({
     render : function () {
-        var btn = '<button id="addbutton">Add Text</button>';
-        var div = '<div id="text-list"></div>';
-        this.$el.html(div + btn);
+      console.log("SOMETHING",TaskCollectionView);
+   
+        // this.$el.html(div + btn);
     },
     initialize : function () {
+    	console.log('I AM LISTENING!');
         this.listenTo(this.collection, 'add', this.addOne);
     },
     events : {
-        "click #addbutton" : "addCollection"
+        "click #addTask" : "addOne"
     },
 
     addOne : function (txt) {
-        txt.set("value","Enter something here...");
-        var view = new TaskView({model : txt});
-        view.render();
+    	console.log(this.collection);
+        // taskModel.set("value","Enter something here...");
+
+        var view = new TaskView({model : taskModel});
+        
         this.$("#taskDescription").append(view.$el);
-    }
+        view.render();
+    
+
     // addCollection : function () {
     //     this.collection.create({id : idCount});
     //     idCount = idCount+1;
-    // }
+    }
 });
+
 
 var content;
 var loginView;
@@ -195,6 +210,8 @@ $(document).ready( function () {
 
 loginView = new LoginView({el:"#app"});
 loginView.render();
+
+taskView = new TaskView({model: taskModel});
 
 
 userModel = new UserModel({title:'Make this page work!',

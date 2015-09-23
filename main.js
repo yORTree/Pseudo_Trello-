@@ -57,7 +57,7 @@ var LoginView = Backbone.View.extend({
 		"click #newName"	: "addNewUser"
 	},
 
-	
+
 	userLogin : function(){
 		$("#login-area").hide();
 		userView.render();
@@ -138,7 +138,7 @@ var UserView = Backbone.View.extend({
 	render: function (){
 		console.log('rendering user view');
 		var userVal = this.model.get("creator");
-		var greeting= "<h1> Hello, "+ userVal+" !!</h1>";
+		var greeting= "<h1> Hello, "+ userVal +" !!</h1>";
 		var btn = '<button id="createTasks">List of Tasks</button>';
 		var input = '<input type="text" value= "Enter another task"/>';
 		this.$el.html("<div  id='userview'>"+greeting+"</div>");
@@ -146,11 +146,11 @@ var UserView = Backbone.View.extend({
 		console.log('user works!',this.el);
 
 	},
-   
+
 	initialize: function(){
 		this.model.on("change", this.render, this);
 	},
-	
+
 	events: {
 		"click #login" : "render"
 	}
@@ -158,7 +158,7 @@ var UserView = Backbone.View.extend({
 	// 	this.taskView.add({});
 	// }
 
-   
+
 
 });
 

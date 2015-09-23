@@ -61,8 +61,8 @@ var LoginView = Backbone.View.extend({
 	userLogin : function(){
 		$("#login-area").hide();
 		var selectedUser = $("#selectDropdown").val();
-		var userModel = app.users.where({username: selectedUser});
-		// console.log(userModel);
+		var userModel = app.users.where({username: selectedUser})[0];
+		 console.log(userModel);
 		userView = new UserView({model: userModel});
 		userView.render();
 		//this.model.get(username)
@@ -81,25 +81,25 @@ var LoginView = Backbone.View.extend({
 //USERVIEW---------------------------------------------------------
 // ----------------------------------------------------------------
 
+
 var UserView = Backbone.View.extend({
 	
 	render: function (){
-	console.log('rendering user view');
-	var allUsers = this.model.get("creator");
-	console.log(allUsers.models);
-	console.log(app.users);
-	var greeting= "<h1> Hello, "+ currentUser +" !!</h1>";
+	console.log(this.model);
+
+	var greeting= "<h1> Hello, "+ this.model.get('username') +" !!</h1>";
 	var btn = '<button id="createTasks">List of Tasks</button>';
 	var input = '<input type="text" value= "Enter another task"/>';
 	this.$el.html("<div  id='userview'>"+greeting+"</div>");
 	$('#app').append(this.el);
 	console.log('user works!',this.el);
 
+
 	},
 
-	initialize: function(){
-		this.model.on("change", this.render, this);
-	},
+	// initialize: function(){
+	// 	this.model.on("change", this.render, this);
+	// },
 
 	events: {
 		"click #login" : "render"
@@ -126,6 +126,7 @@ var TaskModel = Backbone.Model.extend({
 
 var content;
 var loginView;
+var userView;
 var taskView;
 var taskCollection;
 var testModel;
@@ -161,7 +162,7 @@ userModel = new UserModel({title:'Make this page work!',
 // taskView.render();
 
 
-$("#app").append(userView.$el);
+// $("#app").append(userView.$el);
 
 });
 

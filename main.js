@@ -77,9 +77,9 @@ var LoginView = Backbone.View.extend({
 // ----------------------------------------------------------------
 
 
-var UserView = Backbone.View.extend(
-		console.log('rendering user view{
-	render: function (){');
+var UserView = Backbone.View.extend({
+	render: function (){
+		console.log("RENDERING SOMETHING!!!!!");
 		var userVal = this.model.get("creator");
 		var greeting= "<h1> Hello, "+ userVal+" !!</h1>";
 		var btn = '<button id="createTasks">List of Tasks</button>';

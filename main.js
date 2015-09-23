@@ -22,10 +22,13 @@ var LoginView = Backbone.View.extend({
 	render : function (){
 		console.log("render login");
 		var login = '<button id="login" type="submit">Login</button>';
-		var usrBtn = '<br><button id="newName">Add Name</button>';
-		var input = '<br><br><input type="text" id="userField" value="Add New User Name">';
+		var usrBtn = '<button id="newName">Add Name</button>';
+		var input = '<br><input type="text" id="userField" value="Add New User Name">';
+		var headline = '<h1 class="main-heading">To Do List</h1>';
+		var headline2 = '<h2>Please log in.</h2>';
+		var nametag = "<p class='nametag'>name:</p>";
 		var selector = this.userSelector();
-		this.$el.html("<br><div>" +selector +login+ input +usrBtn+"</div>");
+		this.$el.html("<br><div id='login-area'>" + headline + headline2 + nametag + selector + login + input + usrBtn + "</div>");
 		// this.el.append(this.$el);
 	},
     userSelector: function(){

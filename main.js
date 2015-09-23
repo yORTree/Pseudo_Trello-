@@ -57,7 +57,7 @@ var LoginView = Backbone.View.extend({
 		"click #newName"	: "addNewUser"
 	},
 
-	
+
 	userLogin : function(){
 		$("#login-area").hide();
 		userView.render();
@@ -76,12 +76,58 @@ var LoginView = Backbone.View.extend({
 //USERVIEW---------------------------------------------------------
 // ----------------------------------------------------------------
 
+ var UserView = Backbone.View.extend({
+ 	render: function (){
+ 		console.log('rendering user view');
+ 		var userVal = this.model.get("creator");
+		var greeting = "<h1> Hello, " + userVal + "!</h1>"
+ 		var btn = '<button id="createTasks">List of Tasks</button>';
+ 		var input = '<input type="text" value= "Enter another task"/>';
+ 		this.$el.html("<br><div>"+greeting+"</div>");
+		this.$("#app").append(this.el);
+ 		console.log('userView render works!');
 
-var UserView = Backbone.View.extend(
-		console.log('rendering user view{
-	render: function (){');
+ 	},
+
+ 	initialize: function(){
+ 		this.model.on("change", this.render, this);
+ 	},
+ // 	events: {
+ // 		"click #login" : "render"
+ // 	},
+ // 	taskList : function(){
+ // 		this.taskView.add({});
+ // }
+ });
+ // initialize: function(){
+ //       this.model.on("change", this.render, this);
+ // 	// console.log("init login")
+ // 	// this.once("change", this.render, this);
+ // },
+ // events: {
+ // 	"click #login" 		: "userLogin",
+ // 	"click #newName"	: "addNewUser"
+ // },
+
+	// userLogin : function(){
+	// 	loginView.remove();
+	// 	taskView.render();
+	// }
+
+// });
+var UserModel = Backbone.Model.extend({
+    defaults : {"value" : ""},
+    replace : function (str) {
+      this.set("value", str);
+    }
+});
+
+
+var UserView = Backbone.View.extend({
+	render: function (){
+		console.log('rendering user view');
 		var userVal = this.model.get("creator");
-		var greeting= "<h1> Hello, "+ userVal+" !!</h1>";
+		var greeting= "<h1> Hello, "+ userVal +" !!</h1>";
 		var btn = '<button id="createTasks">List of Tasks</button>';
 		var input = '<input type="text" value= "Enter another task"/>';
 		this.$el.html("<div  id='userview'>"+greeting+"</div>");
@@ -89,11 +135,11 @@ var UserView = Backbone.View.extend(
 		console.log('user works!',this.el);
 
 	},
-   
+
 	initialize: function(){
 		this.model.on("change", this.render, this);
 	},
-	
+
 	events: {
 		"click #login" : "render"
 	}
@@ -101,7 +147,7 @@ var UserView = Backbone.View.extend(
 	// 	this.taskView.add({});
 	// }
 
-   
+
 
 });
 

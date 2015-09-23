@@ -83,15 +83,14 @@ var LoginView = Backbone.View.extend({
 
 
 var UserView = Backbone.View.extend({
-
 	render: function (){
 	console.log(this.model);
 
-	var greeting= "<h1> Hello, "+ this.model.get('username') +"!</h1>";
+	var greeting= "<h1> Hello, "+ this.model.get('username') +" !!</h1>";
 	var createBtn = '<button id="createTask">Create New Task</button>';
 	var btn = '<br><br><button id="logout">Logout</button>';
 	var taskBtn = '<br><br><button id="addTask" type="submit">Add Task</button>';
-	var input = '<br><textarea type="text" id="taskDescription" style="width: 300px; height: 300px"  value=""></textarea>';
+	var input = '<br><textarea type="text" id="taskDescription" style="display: none" value="Enter Task Description"></textarea>';
 	this.$el.html("<div id='userview'>"+greeting+ createBtn + input + taskBtn +btn +"</div>");
 	$('#app').append(this.el);
 
@@ -103,7 +102,6 @@ var UserView = Backbone.View.extend({
 
 	initialize: function(){
 		this.model.on("change", this.render, this);
-
 	},
 
 	events: {
@@ -120,14 +118,6 @@ var UserView = Backbone.View.extend({
 
 
 });
-
-
-// ----------------------------------------------------------------
-//TASKVIEW---------------------------------------------------------
-// ----------------------------------------------------------------
-
-
-
 
 
 

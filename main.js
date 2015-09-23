@@ -35,7 +35,7 @@ var LoginView = Backbone.View.extend({
 	},
     userSelector: function(){
 		var users = [];
-		var content = "";
+		content = "";
 
 		for (var i = 0;i < app.users.length; i++){
 			users.push(app.users.models[i].attributes.username);
@@ -76,66 +76,10 @@ var LoginView = Backbone.View.extend({
 //USERVIEW---------------------------------------------------------
 // ----------------------------------------------------------------
 
- var UserView = Backbone.View.extend({
- 	render: function (){
- 		console.log('rendering user view');
- 		var userVal = this.model.get("creator");
-		var greeting = "<h1> Hello, " + userVal + " !</h1>"
- 		var btn = '<button id="showTasks">List of Tasks</button>';
- 		var input = '<input type="text" value= "Enter another task"/>';
- 		this.$el.html("<br><div>"+greeting+"</div>");
- 		console.log('userView render works!');
 
- 	}
-
- 	initialize: function(){
- 		this.model.on("change", this.render, this);
- 	},
- 	events: {
- 		"click #login" : "render"
- 	},
- 	taskList : function(){
- 		this.taskView.add({});
-  }
-
-
-
- });
-
-
- // initialize: function(){
- //       this.model.on("change", this.render, this);
- // 	// console.log("init login")
- // 	// this.once("change", this.render, this);
- // },
- // events: {
- // 	"click #login" 		: "userLogin",
- // 	"click #newName"	: "addNewUser"
- // },
-
-	// userLogin : function(){
-	// 	loginView.remove();
-	// 	taskView.render();
-	// }
-
-// });
-
-
-
-
-
-
-var UserModel = Backbone.Model.extend({
-    defaults : {"value" : ""},
-    replace : function (str) {
-      this.set("value", str);
-    }
-});
-
-
-var UserView = Backbone.View.extend({
-	render: function (){
-		console.log('rendering user view');
+var UserView = Backbone.View.extend(
+		console.log('rendering user view{
+	render: function (){');
 		var userVal = this.model.get("creator");
 		var greeting= "<h1> Hello, "+ userVal+" !!</h1>";
 		var btn = '<button id="createTasks">List of Tasks</button>';
@@ -164,21 +108,6 @@ var UserView = Backbone.View.extend({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var TaskModel = Backbone.Model.extend({
     defaults : {"value" : ""},
     replace : function (str) {
@@ -189,65 +118,65 @@ var TaskModel = Backbone.Model.extend({
 
 
 
-var TaskView = Backbone.View.extend({
-	render: function (){
-		console.log('rendering task view');
-		var taskVal = this.model.get("title");
-		var btn = '<button id="showTasks">Add New Task</button>';
-		var input = '<input type="text" value= "Create A New Task"/>';
-		this.$el.html("<br><div>"+taskVal+"</div>");
-		console.log('it works!');
+// var TaskView = Backbone.View.extend({
+// 	render: function (){
+// 		console.log('rendering task view');
+// 		var taskVal = this.model.get("title");
+// 		var btn = '<button id="showTasks">Add New Task</button>';
+// 		var input = '<input type="text" value= "Create A New Task"/>';
+// 		this.$el.html("<br><div>"+taskVal+"</div>");
+// 		console.log('it works!');
 
-	},
+// 	},
 
-	initialize: function(){
-		this.model.on("change", this.render, this);
-	},
+// 	initialize: function(){
+// 		this.model.on("change", this.render, this);
+// 	},
 
-	events: {
-		"click #login" : "render"
-	},
-	taskList : function(){
-		this.taskView.add({});
-	}
+// 	events: {
+// 		"click #login" : "render"
+// 	},
+// 	taskList : function(){
+// 		this.taskView.add({});
+// 	}
 
 
 
-});
-
-var TaskCollection = Backbone.Collection.extend({
-    model : TaskModel
-});
-
-var TaskCollectionView = Backbone.View.extend({
-    render : function () {
-    	console.log('Rendering!');
-        var btn = '<button id="addTask">Add Task</button>';
-        var div = '<div id="taskList"></div>';
-        this.$el.html(div + btn);
-},
-
-   initialize: function () {
-   	console.log('BLAH!');
-   	this.listenTo(this.collection, "add", this.addView);
-   },
-   events : {
-   	"click #addTask" : "addModel",
-   },
-   addModel : function(){
-   	this.collection.add({});
-   },
-    addView : function (newModel) {
-    	console.log('New Model');
-        // newModel.set("value","Enter New Task");
-        var view = new TaskView({model : newModel});
-        view.render();
-        this.$("#taskList").append(view.$el);
-    }
-
-  });
 // });
 
+// var TaskCollection = Backbone.Collection.extend({
+//     model : TaskModel
+// });
+
+// var TaskCollectionView = Backbone.View.extend({
+//     render : function () {
+//     	console.log('Rendering!');
+//         var btn = '<button id="addTask">Add Task</button>';
+//         var div = '<div id="taskList"></div>';
+//         this.$el.html(div + btn);
+// },
+
+//    initialize: function () {
+//    	console.log('BLAH!');
+//    	this.listenTo(this.collection, "add", this.addView);
+//    },
+//    events : {
+//    	"click #addTask" : "addModel",
+//    },
+//    addModel : function(){
+//    	this.collection.add({});
+//    },
+//     addView : function (newModel) {
+//     	console.log('New Model');
+//         // newModel.set("value","Enter New Task");
+//         var view = new TaskView({model : newModel});
+//         view.render();
+//         this.$("#taskList").append(view.$el);
+//     }
+
+//   });
+// });
+var content;
 var loginView;
 var userView;
 var userModel;
@@ -268,7 +197,7 @@ loginView.render();
 
 userModel = new UserModel({title:'Make this page work!',
                            description: 'Fix all the code!',
-                           creator: 'Jennifer'});
+                           creator: app.users});
 
 userView = new UserView({ model: userModel});
 // userView.render();
@@ -276,11 +205,11 @@ userView = new UserView({ model: userModel});
 // userModel = new UserModel({creator: 'Jennifer'});
 // userView = new UserView({el: "#app"})
 
-taskCollection = new TaskCollection();
-taskView = new TaskView({model: testModel});
-taskCollectionView = new TaskCollectionView({ collection : taskCollection});
-taskCollectionView.render();
-taskCollection.add(testModel)
+// taskCollection = new TaskCollection();
+// taskView = new TaskView({model: testModel});
+// taskCollectionView = new TaskCollectionView({ collection : taskCollection});
+// taskCollectionView.render();
+// taskCollection.add(testModel)
 
 // taskView.render();
 

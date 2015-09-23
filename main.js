@@ -16,6 +16,8 @@ var LoginModel = Backbone.Model.extend({
 	// }
 });
 
+//LOGIN VIEW---------------------------------------------------------
+
 
 
 var LoginView = Backbone.View.extend({
@@ -34,11 +36,11 @@ var LoginView = Backbone.View.extend({
     userSelector: function(){
 		var users = [];
 		var content = "";
-		
-		for (var i = 0;i < app.users.length; i++){ 	
+
+		for (var i = 0;i < app.users.length; i++){
 			users.push(app.users.models[i].attributes.username);
 			content+=("<option>"+users[i]+"</option>");
-	      	
+
       	}
 		content = "<select id='selectDropdown'>"+content+"</select>";
 		return content;
@@ -50,22 +52,75 @@ var LoginView = Backbone.View.extend({
 		this.render();
 	},
 
-	// initialize: function(){
- //       this.model.on("change", this.render, this);
-	// 	// console.log("init login")
-	// 	// this.once("change", this.render, this);
-	// },
 	events: {
 		"click #login" 		: "userLogin",
 		"click #newName"	: "addNewUser"
 	},
-	
-	userLogin : function(){
-		loginView.remove();
-		taskView.render();
-	}
 
-});
+ 	userLogin : function(){
+ 		loginView.remove();
+ 		userView.render();
+ 	}
+
+ });
+
+	var UserModel = Backbone.Model.extend({
+	    defaults : {"value" : ""},
+	    replace : function (str) {
+	      this.set("value", str);
+	    }
+	});
+
+// ----------------------------------------------------------------
+//USERVIEW---------------------------------------------------------
+// ----------------------------------------------------------------
+
+ var UserView = Backbone.View.extend({
+ 	render: function (){
+ 		console.log('rendering user view');
+ 		var userVal = this.model.get("creator");
+		var greeting = "<h1> Hello, " + userVal + " !</h1>"
+ 		var btn = '<button id="showTasks">List of Tasks</button>';
+ 		var input = '<input type="text" value= "Enter another task"/>';
+ 		this.$el.html("<br><div>"+greeting+"</div>");
+ 		console.log('userView render works!');
+
+ 	}
+
+ 	initialize: function(){
+ 		this.model.on("change", this.render, this);
+ 	},
+ 	events: {
+ 		"click #login" : "render"
+ 	},
+ 	taskList : function(){
+ 		this.taskView.add({});
+  }
+
+
+
+ });
+
+
+ // initialize: function(){
+ //       this.model.on("change", this.render, this);
+ // 	// console.log("init login")
+ // 	// this.once("change", this.render, this);
+ // },
+ // events: {
+ // 	"click #login" 		: "userLogin",
+ // 	"click #newName"	: "addNewUser"
+ // },
+
+	// userLogin : function(){
+	// 	loginView.remove();
+	// 	taskView.render();
+	// }
+
+// });
+
+
+
 
 
 var TaskModel = Backbone.Model.extend({
@@ -86,7 +141,7 @@ var TaskView = Backbone.View.extend({
 		console.log('it works!');
 
 	},
-   
+
 	initialize: function(){
 		this.model.on("change", this.render, this);
 	},
@@ -97,7 +152,7 @@ var TaskView = Backbone.View.extend({
 		this.taskView.add({});
 	}
 
-   
+
 
 });
 
@@ -135,6 +190,8 @@ var TaskCollectionView = Backbone.View.extend({
 // });
 
 var loginView;
+var userView;
+var userModel;
 var taskView;
 var taskCollection;
 var testModel;
@@ -148,6 +205,8 @@ testModel = new TaskModel({title:'Make this page work!',
 
 loginView = new LoginView({el:"#app"});
 loginView.render();
+userModel = new UserModel({creator: 'Jennifer'});
+userView = new UserView({el: "#app"})
 taskCollection = new TaskCollection();
 // taskView = new TaskView({model: testModel});
 taskCollectionView = new TaskCollectionView({ collection : taskCollection});

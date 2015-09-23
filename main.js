@@ -94,22 +94,24 @@ var UserView = Backbone.View.extend({
 	var input = '<br><textarea type="text" id="taskDescription" style="width: 300px; height: 300px"  value=""></textarea>';
 	this.$el.html("<div id='userview'>"+greeting+ createBtn + input + taskBtn +btn +"</div>");
 	$('#app').append(this.el);
+
 	console.log('user works!',this.el);
+
 
 
 	},
 
 	initialize: function(){
 		this.model.on("change", this.render, this);
-		$("#input").hide();
+
 	},
 
 	events: {
 		"click #createTask" : "addDescription"
+
 	},
 	addDescription : function(){
-
-
+        $("#taskDescription").show();
 
 
 		// this.taskView.add({});

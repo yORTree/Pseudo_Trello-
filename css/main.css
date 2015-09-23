@@ -34,12 +34,7 @@ body {
 	color: #FFFFFF;
 }
 
-#login-area input{
 
-	color: #222222;
-	width: 100px;
-
-}
 
 button {
 	margin-left: 20px;
@@ -48,21 +43,21 @@ button {
 }
 
 button[#newName]{
-	margin-top: 10px;
+	margin-top: 200px;
 
 }
 
 
 
-input[type="text"]{
+#userField{
 	
 	display: block;
-	width: 100%;
+	width: 80%;
 	padding-left: 10px; 
 	margin-top: 10px;
 	margin-bottom: 10px;
 	text-align: left;
-	color: #222222;
+	color: #777777;
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7) inset;
 
 

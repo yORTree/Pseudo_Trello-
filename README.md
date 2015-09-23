@@ -27,7 +27,7 @@ All details of this proposal may be customized, including the names of the model
 Each user model should have at minimum a `username` attribute, but you may add other attributes as needed.
 Each username should be unique.
 
-* `TaskModel`
+* `TaskModel` - IssueModel
 A task (or "issue") is a job needing to be done by someone on the team.
 Each task has the following attributes:
 	* `title`: a brief summary of the task or issue

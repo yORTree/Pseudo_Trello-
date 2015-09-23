@@ -1,0 +1,69 @@
+body {
+	background-color: #6C62FF;
+	font-family: 'Cabin', sans-serif;
+	box-sizing: border-box;
+}
+
+.nametag {
+	font-size: .8em;
+	margin-bottom: -.25px;
+	color: #FFFFFF;
+
+
+}
+
+#login-area {
+
+	background-color: #36317F;
+	width: 60%;
+	padding: 20px;
+	margin: auto;
+	border-radius: 15px;
+	box-shadow: 5px 5px 5px rgba(0,0,0, 0.75);
+}
+
+#login-area h1 {
+	text-align: center;
+	background-color: #00403E;
+	margin-top: -10px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px rgba(0,0,0, 0.75);
+
+}
+#login-area h2 {
+	color: #FFFFFF;
+}
+
+#login-area input{
+
+	color: #222222;
+	width: 100px;
+
+}
+
+button {
+	margin-left: 20px;
+	border-radius: 3px;
+	padding: 2px, 9px;
+}
+
+button[#newName]{
+	margin-top: 10px;
+
+}
+
+
+
+input[type="text"]{
+	
+	display: block;
+	width: 100%;
+	padding-left: 10px; 
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: left;
+	color: #222222;
+	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7) inset;
+
+
+}

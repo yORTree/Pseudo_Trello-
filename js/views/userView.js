@@ -17,6 +17,7 @@ var UserView = Backbone.View.extend({
 	},
 
 	initialize: function(){
+		console.log("USER VIEW INITIALIZING!!!!!", this.initialize);
 		this.model.on("change", this.render, this);
 	},
 
@@ -32,19 +33,22 @@ var UserView = Backbone.View.extend({
 	},
 
 	taskAdder : function(){
-		
-		var newTask = $("#taskDescription").val();
-		taskView = new TaskView({ collection : taskCollection});
-		this.collection.add({description: newTask});
-    	console.log("Number 1",myTasks);
- 		console.log("Number 2", newTask);
-		myTasks.push(newTask);
-		console.log("Number 3", myTasks);
-		$('TaskCollection').append(myTasks);
+		console.log("I AM WORKING!");
+		var newTaskDescription = $("#taskDescription").val();
+		var model = new TaskModel({description: newTaskDescription});
+		this.collection.add(model); //eventually will be 'create' once server is set up
+		this.makeView(model);
+
+	},
+
+	makeView : function(newModel){
+    var newView = new TaskView({model: newModel});
+      this.$el.append(newView.$el); 
+
+   
 
 	},
 		
-
     logoutUser : function(){
     	$("#userview").hide();
     	$("#login-area").show();

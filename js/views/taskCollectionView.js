@@ -19,7 +19,7 @@ var TaskCollectionView = Backbone.View.extend({
 
         var view = new TaskView({model : taskModel});
         
-        this.$("#taskDescription").append(view.$el);
+        this.$("#taskDescription").append(taskView.$el);
         view.render();
     
 
@@ -28,4 +28,4 @@ var TaskCollectionView = Backbone.View.extend({
     //     idCount = idCount+1;
     }
 });
-taskCollectionView = new TaskCollectionView({ collection : taskCollection});
+// taskCollectionView = new TaskCollectionView({ collection : taskCollection});

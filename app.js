@@ -17,7 +17,6 @@ var app = {};
 var content;
 var loginView;
 var userView;
-var taskView;
 var taskCollection;
 var taskModel;
 var taskCollectionView;
@@ -29,7 +28,7 @@ $(document).ready( function () {
 loginView = new LoginView({el:"#app"});
 loginView.render();
 
-taskView = new TaskView({model: taskModel});
+// taskView = new TaskView({model: taskModel});
 
 
 userModel = new UserModel({title:'Make this page work!',
@@ -46,8 +45,6 @@ userModel = new UserModel({title:'Make this page work!',
 // taskCollectionView.render();
 taskCollection.add(taskModel)
 
-// taskView.render();
-
 
 // $("#app").append(userView.$el);
 
@@ -55,9 +52,9 @@ taskCollection.add(taskModel)
 
 
 
-// 	 app.tasks = new TaskCollection([
-// 		// test data here
-// 	]);
+	//  app.tasks = new TaskCollection([
+	// 	// test data here
+	// ]);
 
 // 	app.gui = new GUI(app.users,
 // 						app.tasks,

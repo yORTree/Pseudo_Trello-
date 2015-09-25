@@ -1,64 +1,79 @@
 body {
-	background-color: #6C62FF;
 	font-family: 'Cabin', sans-serif;
 	box-sizing: border-box;
 }
-
+​
 .nametag {
 	font-size: .8em;
 	margin-bottom: -.25px;
 	color: #FFFFFF;
-
-
+​
+​
 }
-
+​
 #login-area {
-
-	background-color: #36317F;
+​
+	background-color: #5CC5CC;
 	width: 60%;
 	padding: 20px;
 	margin: auto;
 	border-radius: 15px;
 	box-shadow: 5px 5px 5px rgba(0,0,0, 0.75);
 }
-
+​
 #login-area h1 {
 	text-align: center;
-	background-color: #00403E;
+	background-color: #30A8BA;
 	margin-top: -10px;
 	border-radius: 10px;
-	box-shadow: 5px 5px 5px rgba(0,0,0, 0.75);
-
+	/*box-shadow: 5px 5px 5px rgba(0,0,0, 0.75);*/
+​
 }
 #login-area h2 {
 	color: #FFFFFF;
+	text-align: center;
 }
-
-
-
+​
+.userField{
+	text-align: center;
+}
+​
+button.newName{
+	text-align: center;
+}
+body{
+	text-align: center;
+}
+​
+​
+​
+​
 button {
 	margin-left: 20px;
 	border-radius: 3px;
 	padding: 2px, 9px;
 }
-
+​
 button[#newName]{
 	margin-top: 200px;
-
+​
 }
-
-
-
+​
+.main-heading{
+	color: white;
+}
+​
+​
+​
 #userField{
-	
+​
 	display: block;
 	width: 80%;
-	padding-left: 10px; 
+	padding-left: 10px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	text-align: left;
 	color: #777777;
-	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7) inset;
-
-
+​
+​
 }

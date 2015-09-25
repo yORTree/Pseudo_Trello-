@@ -45,9 +45,6 @@ body{
 	text-align: center;
 }
 
-
-
-
 button {
 	margin-left: 20px;
 	border-radius: 3px;
@@ -73,7 +70,10 @@ button[#newName]{
 	margin-top: 10px;
 	margin-bottom: 10px;
 	text-align: left;
-	color: #777777;
+	color: #777777;​
+}
 
+#addTask{
 
+	display: none;
 }

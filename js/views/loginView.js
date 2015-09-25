@@ -41,7 +41,7 @@ var LoginView = Backbone.View.extend({
 		var selectedUser = $("#selectDropdown").val();
 		var userModel = app.users.where({username: selectedUser})[0];
 		 console.log(userModel);
-		userView = new UserView({model: userModel});
+		userView = new UserView({model: userModel, collection: taskCollection});
 		userView.render();
 		//this.model.get(username)
 		}

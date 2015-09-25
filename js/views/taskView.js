@@ -18,5 +18,15 @@ console.log("TASK VIEW IS RENDERING");
   initialize : function(){
     this.render();
 
-  }
+  },
+
+  events : {
+     "click button" : "returnHome"
+
+  },
+
+   returnHome : function(){
+    	$("#taskview").hide();
+    	// $("#login-area").show();
+    }
 });

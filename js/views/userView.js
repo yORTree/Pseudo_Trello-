@@ -5,11 +5,11 @@ var UserView = Backbone.View.extend({
 	var greeting= "<h1> Hello, "+ this.model.get('username') +" !!</h1>";
 	var currentTasks = '<div id="currentTasks"><h2> Here are your current tasks: </h2><br><li>Get Better At This!</li></div>';
 	var createBtn = '<button id="createTask">Create New Task</button>';
-	var showAllTasks = '<button id="showTask">Show All Tasks</button>';
+	
 	var logoutBtn = '<br><br><button id="logout">Logout</button>';
 	var taskBtn = '<br><br><button id="addTask" type="submit">Add Task</button>';
 	var input = '<br><textarea type="text" id="taskDescription" style="display: none" value="Enter Task Description"></textarea>';
-	this.$el.html("<div id='userview'>"+greeting+ currentTasks +createBtn + input + taskBtn + showAllTasks + logoutBtn +"</div>");
+	this.$el.html("<div id='userview'>"+greeting+ currentTasks +createBtn + input + taskBtn +  logoutBtn +"</div>");
 	$('#app').append(this.el);
 
 	console.log('user works!',this.el);

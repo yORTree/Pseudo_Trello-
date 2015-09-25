@@ -43,7 +43,7 @@ userModel = new UserModel({title:'Make this page work!',
 // userView = new UserView({el: "#app"})
 
 
-taskCollectionView.render();
+// taskCollectionView.render();
 taskCollection.add(taskModel)
 
 // taskView.render();

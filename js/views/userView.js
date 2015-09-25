@@ -3,7 +3,7 @@ var UserView = Backbone.View.extend({
 	console.log(this.model);
     
 	var greeting= "<h1> Hello, "+ this.model.get('username') +" !!</h1>";
-	var currentTasks = '<div id="currentTasks"><h2> Here are your current tasks: </h2><br><ul><li>Get Better At This!</li></ul></div>';
+	var currentTasks = '<div id="currentTasks"><h2> Here are your current tasks: </h2></div><div id="taskList"><ul><li><br>Get Better At This!</li></ul></div>';
 	var createBtn = '<button id="createTask">Create New Task</button>';
 	var showAllTasks = '<button id="showTask">Show All Tasks</button>';
 	var logoutBtn = '<br><br><button id="logout">Logout</button>';
@@ -17,6 +17,7 @@ var UserView = Backbone.View.extend({
 	},
 
 	initialize: function(){
+		console.log("USER VIEW INITIALIZING!!!!!", this.initialize);
 		this.model.on("change", this.render, this);
 	},
 
@@ -32,15 +33,10 @@ var UserView = Backbone.View.extend({
 	},
 
 	taskAdder : function(){
-		
-		var newTask = $("#taskDescription").val();
-		taskView = new TaskView({ collection : taskCollection});
-		this.collection.add({description: newTask});
-    	console.log("Number 1",myTasks);
- 		console.log("Number 2", newTask);
-		myTasks.push(newTask);
-		console.log("Number 3", myTasks);
-		$('TaskCollection').append(myTasks);
+		console.log("I AM ADDING TASKS- WOOT!", this.taskAdder);
+		taskView = new TaskCollection({ collection : taskCollection});
+		// this.collection.create({description: taskView});
+		// $('TaskCollection').append(myTasks);
 
 	},
 		

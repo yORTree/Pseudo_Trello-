@@ -1,9 +1,9 @@
 var UserView = Backbone.View.extend({
 	render: function (){
 	console.log(this.model);
-    
+
 	var greeting= "<h1> Hello, "+ this.model.get('username') +" !!</h1>";
-	var currentTasks = '<div id="currentTasks"><h2> Here are your current tasks: </h2><br><ul><li>Get Better At This!</li></ul></div>';
+	var currentTasks = '<div id="currentTasks"><h2> Here are your current tasks: </h2><br><li>Get Better At This!</li></div>';
 	var createBtn = '<button id="createTask">Create New Task</button>';
 	
 	var logoutBtn = '<br><br><button id="logout">Logout</button>';
@@ -26,7 +26,7 @@ var UserView = Backbone.View.extend({
 		"click #createTask" : "addDescription",
 		"click #addTask" : "taskAdder",
 		"click #logout" : "logoutUser"
-	
+
 	},
 	addDescription : function(){
 		$("#addTask").show();
@@ -47,12 +47,12 @@ var UserView = Backbone.View.extend({
 
 	makeView : function(newModel){
     var newView = new TaskView({model: newModel});
-      this.$el.append(newView.$el); 
+      this.$el.append(newView.$el);
 
-   
+
 
 	},
-		
+
     logoutUser : function(){
     	$("#userview").hide();
     	$("#login-area").show();

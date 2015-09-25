@@ -12,7 +12,6 @@ body {
 }
 ​
 #login-area {
-​
 	background-color: #5CC5CC;
 	width: 60%;
 	padding: 20px;
@@ -27,8 +26,8 @@ body {
 	margin-top: -10px;
 	border-radius: 10px;
 	/*box-shadow: 5px 5px 5px rgba(0,0,0, 0.75);*/
-​
 }
+
 #login-area h2 {
 	color: #FFFFFF;
 	text-align: center;
@@ -44,10 +43,7 @@ button.newName{
 body{
 	text-align: center;
 }
-​
-​
-​
-​
+
 button {
 	margin-left: 20px;
 	border-radius: 3px;
@@ -74,6 +70,7 @@ button[#newName]{
 	margin-bottom: 10px;
 	text-align: left;
 	color: #777777;
+<<<<<<< HEAD
 ​
 ​
 }
@@ -82,3 +79,6 @@ button[#newName]{
 
 	display: none;
 }
+=======
+}
+>>>>>>> master

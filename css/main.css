@@ -7,8 +7,7 @@ body {
 	font-size: .8em;
 	margin-bottom: -.25px;
 	color: #FFFFFF;
-​
-​
+
 }
 ​
 #login-area {
@@ -20,16 +19,15 @@ body {
 	box-shadow: 5px 5px 5px rgba(0,0,0, 0.75);
 }
 ​
-#login-area h1 {
+#main-heading {
 	text-align: center;
 	background-color: #30A8BA;
 	margin-top: -10px;
 	border-radius: 10px;
-	/*box-shadow: 5px 5px 5px rgba(0,0,0, 0.75);*/
 }
 
+
 #login-area h2 {
-	color: #FFFFFF;
 	text-align: center;
 }
 ​
@@ -62,8 +60,6 @@ button[#newName]{
 ​
 ​
 #userField{
-​
-	display: block;
 	width: 80%;
 	padding-left: 10px;
 	margin-top: 10px;

@@ -41,6 +41,7 @@ body {
 button.newName{
 	text-align: center;
 }
+
 body{
 	text-align: center;
 }
@@ -48,7 +49,6 @@ body{
 button {
 	margin-left: 20px;
 	border-radius: 3px;
-	padding: 2px, 9px;
 }
 
 button[#newName]{
@@ -76,4 +76,35 @@ button[#newName]{
 #addTask{
 
 	display: none;
+}
+
+
+
+
+
+
+button#login, button#newName, button#createTask, button#showAll, button#logout, button#addTask, button#homePage {
+	-moz-box-shadow:inset 0px 39px 0px -24px #e67a73;
+	-webkit-box-shadow:inset 0px 39px 0px -24px #e67a73;
+	box-shadow:inset 0px 39px 0px -24px #e67a73;
+	background-color:#e4685d;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:9px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+}
+button#login, button#newName, button#createTask, button#showAll, button#logout, button#addTask, button#homePage:hover {
+	background-color:#eb675e;
+}
+button#login, button#newName, button#createTask, button#showAll, button#logout, button#addTask, button#homePage:active {
+	position:relative;
+	top:1px;
 }

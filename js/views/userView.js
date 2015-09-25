@@ -8,8 +8,9 @@ var UserView = Backbone.View.extend({
 	
 	var logoutBtn = '<br><br><button id="logout">Logout</button>';
 	var taskBtn = '<br><br><button id="addTask" type="submit">Add Task</button>';
+    var showAll = '<br><br><button id="showAll">Show All Tasks</button>';
 	var input = '<br><textarea type="text" id="taskDescription" style="display: none" value="Enter Task Description"></textarea>';
-	this.$el.html("<div id='userview'>"+greeting+ currentTasks +createBtn + input + taskBtn +  logoutBtn +"</div>");
+	this.$el.html("<div id='userview'>"+greeting+ currentTasks +createBtn +input + taskBtn + showAll + logoutBtn +"</div>");
 	$('#app').append(this.el);
 
 	console.log('user works!',this.el);
@@ -21,13 +22,14 @@ var UserView = Backbone.View.extend({
 		this.model.on("change", this.render, this);
 	},
 
-	events: {
+	events:  {
 		"click #createTask" : "addDescription",
 		"click #addTask" : "taskAdder",
 		"click #logout" : "logoutUser"
 
 	},
 	addDescription : function(){
+		$("#addTask").show();
         $("#taskDescription").show();
 
 	},
@@ -38,7 +40,9 @@ var UserView = Backbone.View.extend({
 		var model = new TaskModel({description: newTaskDescription});
 		this.collection.add(model); //eventually will be 'create' once server is set up
 		this.makeView(model);
-
+		$('#taskDescription').val('');
+		$('#taskDescription').hide();
+        $('#addTask').hide();
 	},
 
 	makeView : function(newModel){

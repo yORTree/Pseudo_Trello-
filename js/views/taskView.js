@@ -28,7 +28,7 @@ console.log("TASK VIEW IS RENDERING");
   },
 
    returnHome : function(){
-    	$("#taskview").empty();
+    	$("#taskview").remove();
 
     	// $("#login-area").show();
     }

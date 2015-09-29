@@ -111,6 +111,18 @@ color: white;
 	display: none;
 }
 
+#logout{
+  position: relative;
+  top: -43px;
+  left: 410px;
+}
+
+#showAll{
+
+position:relative;
+	top:1px;
+}
+
 
 #taskview{
 

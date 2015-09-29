@@ -9,7 +9,7 @@ var UserView = Backbone.View.extend({
 	var logoutBtn = '<button id="logout">Logout</button>';
 	var taskBtn = '<br><br><button id="addTask" type="submit" style="display: none">Add Task</button>';
     var showAll = '<br><br><button id="showAll">Show All Tasks</button>';
-	var input = '<br><textarea type="text" id="taskDescription" style="display: none" value="Enter Task Description"></textarea>';
+	var input = '<br><br><textarea type="text" id="taskDescription" style="display: none" value="Enter Task Description"></textarea>';
 	this.$el.html("<div id='userview'>"+greeting+ currentTasks +createBtn +input + taskBtn + showAll + logoutBtn +"</div>");
 	$('#app').append(this.el);
 

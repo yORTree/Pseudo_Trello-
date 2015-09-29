@@ -9,8 +9,15 @@ var LoginView = Backbone.View.extend({
 		var nametag = "<p class='nametag'>name:</p>";
 		var selector = this.userSelector();
 		this.$el.html("<br><div id='login-area'>" + headline + headline2 + nametag + selector + login + input + usrBtn + "</div>");
-		// this.el.append(this.$el);
+		$('#app').append(this.$el);
 	},
+    
+	initialize : function(){
+	  this.render();
+      this.listenTo(this.collection, "add", this.refreshView);
+
+	},
+
     userSelector: function(){
 		var users = [];
 		content = "";
@@ -31,8 +38,9 @@ var LoginView = Backbone.View.extend({
 	},
 
 	events: {
-		"click #login" 		: "userLogin",
-		"click #newName"	: "addNewUser"
+		"click #login" 	  : "userLogin",
+		"click #newName"  : "addNewUser",
+		"keypress input"       : "enterKey"
 	},
 
 
@@ -44,6 +52,19 @@ var LoginView = Backbone.View.extend({
 		userView = new UserView({model: userModel, collection: taskCollection});
 		userView.render();
 		//this.model.get(username)
-		}
+		},
+
+	enterKey : function(e){
+          if(e.keyCode == 13){
+          	this.collection.add({username:$('#userField').val()});
+          }
+      },
+
+      refreshView : function(){
+      	console.log("I AM RuNNING!");
+      this.remove();
+      var loginView = new LoginView({collection:this.collection})
+
+      }
 
  });

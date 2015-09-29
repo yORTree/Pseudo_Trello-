@@ -25,8 +25,7 @@ $(document).ready( function () {
 	console.log("ready");
                         
 
-loginView = new LoginView({el:"#app"});
-loginView.render();
+loginView = new LoginView({collection: app.users});
 
 // taskView = new TaskView({model: taskModel});
 

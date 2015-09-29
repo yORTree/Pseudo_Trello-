@@ -111,14 +111,8 @@ color: white;
 	display: none;
 }
 
-#logout{
-  position: relative;
-  top: -43px;
-  left: 410px;
-}
 
 #showAll{
-
 position:relative;
 	top:1px;
 }
@@ -137,6 +131,60 @@ position:relative;
 }
 
 
+#logout:hover { 
+    -webkit-transform: scale(1.05);/*Grows in size like Angry Birds button*/
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+#login:hover { 
+    -webkit-transform: scale(1.05);/*Grows in size like Angry Birds button*/
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+
+#newName:hover { 
+    -webkit-transform: scale(1.05);/*Grows in size like Angry Birds button*/
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+
+#homePage:hover { 
+    -webkit-transform: scale(1.05);/*Grows in size like Angry Birds button*/
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+
+#addTask:hover { 
+    -webkit-transform: scale(1.05);/*Grows in size like Angry Birds button*/
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+
+#showAll:hover { 
+    -webkit-transform: scale(1.05);/*Grows in size like Angry Birds button*/
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+
+
+#createTask:hover { 
+    -webkit-transform: scale(1.05);/*Grows in size like Angry Birds button*/
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
 
 
 button#login, button#newName, button#createTask, button#showAll, button#logout, button#addTask, button#homePage {

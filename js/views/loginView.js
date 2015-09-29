@@ -2,8 +2,8 @@ var LoginView = Backbone.View.extend({
 	render : function (){
 		console.log("render login");
 		var login = '<button id="login" type="submit">Login</button>';
-		var usrBtn = '<button id="newName">Add Name</button>';
-		var input = '<br><input type="text" id="userField" placeholder="Add New User Name">';
+		var usrBtn = '<br><br><button id="newName">Create User</button>';
+		var input = '<br><br><input type="text" id="userField" placeholder="Add New User Name">';
 		var headline = '<h1 class="main-heading">To Do List</h1>';
 		var headline2 = '<h2>Please log in.</h2>';
 		var nametag = "<p class='nametag'>name:</p>";
